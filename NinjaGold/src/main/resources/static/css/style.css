@@ -1,0 +1,83 @@
+body{
+    background-image: url("../imgs/wallpaper.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+#title{
+    color:orange;
+    font-weight: 600;
+    background-image: url("../imgs/pngwing.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    border-radius: 20px;
+}
+.findBtn,#startOver {
+    color: black;
+    background-color: white;
+    box-shadow: 3px 3px 1px black;
+    border-color: black;
+}
+
+.findBtn:hover, #startOver:hover {
+    color: black;
+    background-color: orange;
+}
+
+#activities {
+    height: 250px;
+    overflow: scroll;
+}
+
+#farm{
+    background-image: url("../imgs/farm2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#cave{
+    background-image: url("../imgs/Cave2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#house{
+    background-image: url("../imgs/House.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#quest{
+    background-image: url("../imgs/Quest.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#locations div p, #locations div h1{
+    color:white;
+    background-color: rgba(0, 0, 0, 0.455);
+    border-radius: 12px;
+    transform: rotate(-12deg);
+    box-shadow: 2px 1px 4px rgb(16, 16, 16);
+
+}
+
+.bg-round{
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    top:15px;
+    left: 5px;
+    z-index: -1;
+    color:rgb(0, 0, 0);
+    font-weight: 600;
+    padding: 0px 10px 10px 10px;
+    background-color: orange;
+    border-radius: 12px 12px / 8px 8px;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0);
+}
