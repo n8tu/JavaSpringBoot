@@ -23,4 +23,10 @@ public class BookController {
         model.addAttribute("book",book);
         return "show_book.jsp";
     }
+
+    @RequestMapping("/books")
+    public String allBook(Model model){
+        model.addAttribute("books",bookService.allBooks());
+        return "all_books.jsp";
+    }
 }
