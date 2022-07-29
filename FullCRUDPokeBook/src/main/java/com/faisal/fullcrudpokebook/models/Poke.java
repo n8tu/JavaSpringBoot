@@ -1,4 +1,4 @@
-package com.faisal.addtopokebook.models;
+package com.faisal.fullcrudpokebook.models;
 
 
 import org.springframework.format.annotation.DateTimeFormat;

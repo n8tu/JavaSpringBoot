@@ -1,10 +1,10 @@
-package com.faisal.addtopokebook;
+package com.faisal.fullcrudpokebook;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AddToPokePokeApplicationTests {
+class FullCRUDPokeBookApplicationTests {
 
     @Test
     void contextLoads() {

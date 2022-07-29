@@ -1,7 +1,7 @@
-package com.faisal.addtopokebook.services;
+package com.faisal.fullcrudpokebook.services;
 
-import com.faisal.addtopokebook.models.Poke;
-import com.faisal.addtopokebook.repositories.PokeRepository;
+import com.faisal.fullcrudpokebook.models.Poke;
+import com.faisal.fullcrudpokebook.repositories.PokeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

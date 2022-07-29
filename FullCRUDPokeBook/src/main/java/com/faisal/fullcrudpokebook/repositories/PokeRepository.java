@@ -1,6 +1,6 @@
-package com.faisal.addtopokebook.repositories;
+package com.faisal.fullcrudpokebook.repositories;
 
-import com.faisal.addtopokebook.models.Poke;
+import com.faisal.fullcrudpokebook.models.Poke;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

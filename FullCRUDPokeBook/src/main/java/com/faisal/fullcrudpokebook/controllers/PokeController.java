@@ -1,7 +1,7 @@
-package com.faisal.addtopokebook.controllers;
+package com.faisal.fullcrudpokebook.controllers;
 
-import com.faisal.addtopokebook.models.Poke;
-import com.faisal.addtopokebook.services.PokeService;
+import com.faisal.fullcrudpokebook.models.Poke;
+import com.faisal.fullcrudpokebook.services.PokeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
