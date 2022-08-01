@@ -49,6 +49,15 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd:hh:mm:ss")
     private Date updatedAt;
 
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
+
     public String getUsername() {
         return username;
     }
