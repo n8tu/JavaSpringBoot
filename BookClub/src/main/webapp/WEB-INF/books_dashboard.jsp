@@ -20,8 +20,9 @@
             <a href="/logout">logout</a>
         </div>
 
-        <div class="mb-3 d-flex justify-content-between align-items-center">
+        <div class="mb-3 d-flex justify-content-between align-items-start">
             <p>Books from everyone's shelves:</p>
+            <a href="/bookmarket">Visit book market!</a>
             <a href="/books/new">+ Add a book to my shelf!</a>
         </div>
 
@@ -44,7 +45,7 @@
                             </a>
                         </td>
                         <td><c:out value="${book.author}"/></td>
-                        <td><c:out value="${book.user.username}"/></td>
+                        <td><c:out value="${book.owner.username}"/></td>
                     </tr>
                 </c:forEach>
             </tbody>

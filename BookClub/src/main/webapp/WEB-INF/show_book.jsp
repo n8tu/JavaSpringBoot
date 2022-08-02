@@ -26,13 +26,13 @@
         <div class="mb-3">
             <p class="fs-4 mb-4">
                 <c:choose>
-                    <c:when test="${user.id == book.user.id}">
+                    <c:when test="${user.id == book.owner.id}">
                         <span class="text-danger">You</span>
                     </c:when>
 
                     <c:otherwise>
                         <span class="text-danger">
-                            <c:out value="${book.user.username}"/>
+                            <c:out value="${book.owner.username}"/>
                         </span>
                     </c:otherwise>
                 </c:choose>
@@ -49,12 +49,12 @@
             <p class="fs-5 mb-5">
                 Here are
                 <c:choose>
-                    <c:when test="${user.id == book.user.id}">
+                    <c:when test="${user.id == book.owner.id}">
                         Your
                     </c:when>
 
                     <c:otherwise>
-                        <c:out value="${book.user.username}"/>'s
+                        <c:out value="${book.owner.username}"/>'s
                     </c:otherwise>
                 </c:choose>
                 thoughts:
@@ -64,10 +64,14 @@
                 <c:out value="${book.thoughts}"/>
             </p>
             
-            <c:if test="${user.id == book.user.id}">
-                <p class="d-flex justify-content-end align-items-center w-25">
-                    <a href="/books/${book.id}/edit" class="btn btn-dark">Edit</a>
-                </p>
+            <c:if test="${user.id == book.owner.id}">
+                <div class="d-flex justify-content-center align-items-center w-25">
+                    <a href="/books/${book.id}/edit" class="btn btn-dark mx-2">Edit</a> |
+                    <form:form class="mx-2" action="/books/${book.id}/delete" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form:form>
+                </div>
             </c:if>
         </div>
     </div>

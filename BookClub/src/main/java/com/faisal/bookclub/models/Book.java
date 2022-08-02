@@ -3,7 +3,6 @@ package com.faisal.bookclub.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
@@ -14,11 +13,12 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String author, String thoughts, User user) {
+    public Book(String title, String author, String thoughts, User owner, User borrow) {
         this.title = title;
         this.author = author;
         this.thoughts = thoughts;
-        this.user = user;
+        this.owner = owner;
+        this.borrow = borrow;
     }
 
     @Id
@@ -36,8 +36,12 @@ public class Book {
     private String thoughts;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "owner_id")
+    private User owner;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "borrowed_id")
+    private User borrow;
 
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd:hh:mm:ss")
@@ -79,12 +83,20 @@ public class Book {
         this.thoughts = thoughts;
     }
 
-    public User getUser() {
-        return user;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public User getBorrow() {
+        return borrow;
+    }
+
+    public void setBorrow(User borrow) {
+        this.borrow = borrow;
     }
 
     public long getId() {

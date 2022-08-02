@@ -14,12 +14,14 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password, String confirm_password,List<Book> books) {
+    public User(String username, String email, String password,
+                String confirm_password,List<Book> books ,List<Book> borrowed_books) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.confirm_password = confirm_password;
         this.books = books;
+        this.borrowed_books = borrowed_books;
     }
 
     @Id
@@ -44,8 +46,12 @@ public class User {
     @Size(min = 8,message = "Confirm password must be at least 8 characters and Match the password")
     private String confirm_password;
 
-    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "owner" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
     private List<Book> books;
+
+    @OneToMany(mappedBy = "borrow" ,cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    private List<Book> borrowed_books;
+
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd:hh:mm:ss")
     private Date createdAt;
@@ -112,5 +118,13 @@ public class User {
 
     public List<Book> getBooks() {
         return books;
+    }
+
+    public List<Book> getBorrowed_books() {
+        return borrowed_books;
+    }
+
+    public void setBorrowed_books(List<Book> borrowed_books) {
+        this.borrowed_books = borrowed_books;
     }
 }

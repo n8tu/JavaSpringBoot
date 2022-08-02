@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="row justify-content-end align-items-center mb-3">
-                    <form:input type="hidden" path="user" value="${user.id}" />
+                    <form:input type="hidden" path="owner" value="${user.id}" />
                     <button class="btn btn-dark w-25">Submit</button>
                     <script>
                         function addThought(){

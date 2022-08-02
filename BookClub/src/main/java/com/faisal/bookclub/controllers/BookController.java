@@ -1,6 +1,7 @@
 package com.faisal.bookclub.controllers;
 
 import com.faisal.bookclub.models.Book;
+import com.faisal.bookclub.models.User;
 import com.faisal.bookclub.services.BookService;
 import com.faisal.bookclub.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -134,6 +135,69 @@ public class BookController {
             bookService.updateBook(id,book);
             return "redirect:/books";
         }
+    }
+
+    @RequestMapping(value = "/books/{book_id}/delete" , method = RequestMethod.DELETE)
+    public String deleteBook(
+            @PathVariable(value = "book_id") long book_id,
+            HttpSession session
+    ){
+        if(!userController.isLogin(session)){
+            return "redirect:/login";
+        }
+        User user = userService.findUser(
+                (long) session.getAttribute("user_id")
+        );
+        bookService.deleteBook(user,book_id);
+        return "redirect:/bookmarket";
+    }
+
+    @RequestMapping("/bookmarket")
+    public String bookMarketDashboard(
+            Model model,
+            HttpSession session
+    ){
+        if(!userController.isLogin(session)){
+            return "/login";
+        }
+        model.addAttribute("books",bookService.allBooks());
+        model.addAttribute("user",userService.findUser(
+                (long) session.getAttribute("user_id")
+        ));
+        return "book_market_dashboard.jsp";
+    }
+
+    @RequestMapping(value="/bookmarket/{book_id}/borrow" , method = RequestMethod.GET)
+    public String borrowBook(
+            @PathVariable(value = "book_id") long book_id,
+            HttpSession session
+    ){
+        if(!userController.isLogin(session)){
+            return "redirect:/login";
+        }
+
+        bookService.borrowBook(
+                userService.findUser(
+                        (long) session.getAttribute("user_id")),
+                book_id
+        );
+        return "redirect:/bookmarket";
+    }
+
+    @RequestMapping(value = "/bookmarket/{book_id}/return" , method = RequestMethod.GET)
+    public String returnBook(
+            @PathVariable(value = "book_id") long book_id,
+            HttpSession session
+    ){
+        if(!userController.isLogin(session)){
+            return "redirect:/login";
+        }
+
+        User user = userService.findUser(
+                (long) session.getAttribute("user_id")
+        );
+        bookService.returnBook(user,book_id);
+        return "redirect:/bookmarket";
     }
 
 

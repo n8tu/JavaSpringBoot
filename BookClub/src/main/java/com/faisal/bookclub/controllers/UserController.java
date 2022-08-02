@@ -26,13 +26,17 @@ public class UserController {
 
     @RequestMapping("/")
     public String index(){
-        return "redirect:/login";
+        return "redirect:/books";
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login(
-            @ModelAttribute("login") Login login
+            @ModelAttribute("login") Login login,
+            HttpSession session
     ){
+        if(isLogin(session)){
+            return "redirect:/success";
+        }
         return "login.jsp";
     }
 
@@ -55,8 +59,12 @@ public class UserController {
 
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String register(
-            @ModelAttribute("register") User user
+            @ModelAttribute("register") User user,
+            HttpSession session
     ){
+        if(isLogin(session)){
+            return "redirect:/success";
+        }
         return "register.jsp";
     }
 
@@ -82,7 +90,7 @@ public class UserController {
         if(session.getAttribute("user_id") == null){
             return "redirect:/login";
         }
-        return "redirect:/books";
+        return "redirect:/";
     }
 
     @RequestMapping("/logout")
@@ -103,7 +111,7 @@ public class UserController {
             Book book,
             HttpSession session
     ){
-        if((long)session.getAttribute("user_id") == book.getUser().getId()){
+        if((long)session.getAttribute("user_id") == book.getOwner().getId()){
             return true;
         }else{
             return false;

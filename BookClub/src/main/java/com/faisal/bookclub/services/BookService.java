@@ -1,6 +1,7 @@
 package com.faisal.bookclub.services;
 
 import com.faisal.bookclub.models.Book;
+import com.faisal.bookclub.models.User;
 import com.faisal.bookclub.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +45,33 @@ public class BookService{
         }
     }
 
+    public void borrowBook(User user, long book_id){
+        Optional<Book> book = bookRepository.findById(book_id);
+        if(book.isPresent()){
+            if(book.get().getBorrow() == null) {
+                book.get().setBorrow(user);
+                bookRepository.save(book.get());
+            }
+        }
+    }
+
+    public void returnBook(User user , long book_id){
+        Optional<Book> book = bookRepository.findById(book_id);
+        if(book.isPresent()){
+            if(book.get().getBorrow().getId() == user.getId()){
+                book.get().setBorrow(null);
+                bookRepository.save(book.get());
+            }
+        }
+    }
+
+    public void deleteBook(User user , long book_id){
+        Optional<Book> book = bookRepository.findById(book_id);
+        if(book.isPresent()){
+            if(book.get().getOwner().getId() == user.getId()){
+                bookRepository.delete(book.get());
+            }
+        }
+    }
 
 }
