@@ -1,0 +1,67 @@
+
+body >:first-child{
+    border-radius: 20px;
+    padding: 0px;
+    margin: 0px;
+    border:2px solid rgba(0, 0, 0, 0.326);
+}
+
+#first_section{
+    padding: 0px;
+    margin: 0px;
+    border-radius: 20px 0px 0px 20px;
+    box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.636);
+    /* clip-path: inset(0px -40px 0px 0px); */
+    z-index: 2000;
+}
+
+#second_section{
+    padding: 0px;
+    margin: 0px;
+    border-radius: 0px 20px 20px 0px;
+}
+
+#login_register_picture{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    border-radius: inherit;
+}
+
+.form_text{
+    border-color:rgb(5, 5, 5);
+    border:none;
+    border-radius: 0px;
+    border-bottom:3px solid;
+    height: 50px;
+}
+.form_text:focus{
+    box-shadow: none;
+    border-color: rgb(15, 15, 15);
+}
+
+.form_label{
+    font-weight: lighter;
+}
+
+.btn{
+    font-size: 22px;
+    height: 60px;
+    border-radius: 25px;
+}
+
+.btn:hover{
+    outline: black none 20px;
+    background-color: white;
+    color:black
+}
+
+#second_section > p {
+    padding: 10px;
+    border-radius: 0px 20px 20px 0px;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+
